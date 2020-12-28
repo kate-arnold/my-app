@@ -44,6 +44,7 @@ class Game extends React.Component {
       this.state = {
         history: [{
           squares: Array(9).fill(null),
+          i: null,
         }],
         xIsNext: true,
         stepNumber: 0,
@@ -61,6 +62,7 @@ class Game extends React.Component {
     this.setState({
       history: h.concat([{
         squares: s,
+        i: i,
       }]),
       stepNumber: h.length,
       xIsNext: !this.state.xIsNext,
@@ -81,9 +83,12 @@ class Game extends React.Component {
 
     const moves = history.map((step, move) => {
       const desc = move ? 'Go to move #' + move : 'Go to game start';
+      const coords = move ? ' (' + ((step.i % 3) + 1) + ', ' + ((step.i - (step.i % 3))/3 + 1) + ')' : '';
+      const cn = (move === this.state.stepNumber) ? 'currentstep' : '';
       return (
-          <li key={move}>
+          <li key={move} className={cn}>
             <button onClick={() => this.jumpTo(move)}>{desc}</button>
+            {coords}
           </li>
       );
     });
@@ -103,13 +108,6 @@ class Game extends React.Component {
         <div className="game-info">
           <div>{status}</div>
           <ol>{moves}</ol>
-        </div>
-
-        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-
-        <div>
-          Add component
-          <Add a={2} b={3} />
         </div>
       </div>
     );
@@ -134,14 +132,6 @@ function calculateWinner(squares) {
     }
   }
   return null;
-}
-
-function Add(props) {
-  return (
-    <div>
-      {props.a} + {props.b} = {props.a + props.b}
-    </div>
-  )
 }
 
 // ========================================
