@@ -14,7 +14,7 @@ class ToDoList extends React.Component {
       {
         id: 2,
         title: 'Second item',
-        completed: false
+        completed: true
       },
       {
         id: 3,
@@ -31,7 +31,7 @@ class ToDoList extends React.Component {
         <div>
           {
               this.state.todos.map(
-                (td) => (<ToDoItem it={td} />)
+                (td) => (<ToDoItem key={td.id} it={td} />)
               )
           }
         </div>
