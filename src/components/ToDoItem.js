@@ -9,7 +9,7 @@ class ToDoItem extends React.Component {
     //}
     return {
       textDecoration: this.props.it.completed ? 'line-through' : 'none',
-      backrgound: '#eee',
+      background: '#eee',
       padding: '10px'
     }
   }
