@@ -61,3 +61,28 @@ ol, ul {
 .mt {
   margin-top:16px;
 }
+
+.flexbox {
+  display:flex;
+}
+
+#sandbox-nav a {
+  margin-right:16px;
+  background-color:#ddd;
+  padding:8px 16px;
+  color:#000;
+  text-decoration:none;
+}
+
+#sandbox-nav a:hover {
+  text-decoration:underline;
+}
+
+#sandbox-nav a.nav-active {
+  border:solid 1px #333;
+}
+
+#sandbox-nav a.nav-active:hover {
+  text-decoration:none;
+  cursor:default;
+}
